@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Shopping Cart</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">View Your Cart</p>
+                </div>
+            </div>
+        </header>
+        <br>
+        <div class="container">
+          {% if cart_products %}
+              {% for product in cart_products %}
+                  <div class="row">
+                      <div class="col-md-6 mx-auto">
+                          <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row g-0">
+                                  <div class="col-md-12">
+                                      <img src="{{product.image.url}}" class="img-fluid rounded-start" alt="...">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6 mx-auto">
+                          <div class="card mb-3" style="max-width: 540px;">
+                              <div class="row g-0">
+                                  <div class="col-md-12">
+                                      <div class="card-body">
+                                          <h5 class="card-title">{{product.name}}</h5>
+                                          <p class="card-text">{{product.description}}</p>
+                                          <p class="card-text"><small class="text-body-secondary">${{product.price}}</small></p>
+      
+                                          <br><br>
+      
+                                          <h5>Quantity</h5>
+                                          <select class="form-select" id="qty-cart">
+                                              {% for key, value in quantities.items %}
+                                                  {% if key == product.id|slugify %}
+                                                      <option selected>{{ value }}</option>
+                                                  {% endif %}
+                                              {% endfor %}
+      
+                                              <option value="1">1</option>
+                                              <option value="2">2</option>
+                                              <option value="3">3</option>
+                                              <option value="4">4</option>
+                                              <option value="5">5</option>
+                                              <option value="6">6</option>
+                                              <option value="7">7</option>
+                                              <option value="8">8</option>
+                                              <option value="9">9</option>
+                                          </select>
+                                          <br><br>
+      
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              {% endfor %}
+          {% else %}
+              <div class="container text-center">
+                  <h3>There's nothing in your Cart...</h3>
+              </div>
+              <br><br><br><br><br><br><br><br><br>
+          {% endif %}
+          <br><br><br><br><br><br><br><br>
+      </div>
+      
+
+{% endblock %}

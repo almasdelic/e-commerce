@@ -1,2 +1,2 @@
-# ecommerce
+# ECOMMERCE
  Ecommerce Site in Django

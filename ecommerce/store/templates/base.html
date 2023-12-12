@@ -8,6 +8,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>GameTech</title>
+        <link rel="stylesheet" href="{% static '..static/css/styles.css' %}">
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
         <!-- Bootstrap icons-->
@@ -33,12 +34,75 @@
 
         {% endblock %}
 
-
+        
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"> 
-                <p class="m-0 text-center text-white">Copyright &copy; GameTech 2023</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" style="color: white"> 
+                        <img src="{% static 'images/cooperation.png' %}">
+                        <br> <br>
+                        <p>Your ultimate destination for <br> cutting-edge gaming technologies!</p>
+                        <br><br>
+
+                        <img src="{% static 'images/pin.png' %}">
+                        <p>Zeljeznicka stanica Kakanj</p>
+
+                        <img src="{% static 'images/telephone.png' %}">
+                        <p>+387605559999</p>
+
+                        <img src="{% static 'images/email.png' %}">
+                        <p>gametech2023@gmail.com</p>
+                        
+                    </div>
+
+                    <div class="col-md-3" style="color: white">
+                        <h3>Opening Hours</h3>
+
+                        <br>
+                        <p> <b>Monday-Wednesday</b></p> <p>8.00-18.00    </p>
+                        <br>
+                        <p> <b>Thursday-Friday</b></p> <p>8.00-17.00    </p>
+                        <br>
+                        <p> <b>Saturday</b></p> <p>9.00-18.00    </p>
+                        <br>
+                        <p> <b>Sunday</b></p> <p>10.00-18.00    </p>
+                    </div>
+
+                    <div class="col-md-3" style="color: white">
+                        <h3>Quick Links</h3>
+                        <br>
+                        <div class="links" style="display:flex; flex-direction:column;">
+                            <a href="{% url 'home' %}" style="text-decoration:none !important; color:white !important; margin-bottom: 30px;">Home</a>
+                            <a href="{% url 'about' %}" style="text-decoration:none !important; color:white !important; margin-bottom: 30px;">About</a>
+                            <a href="{% url 'contact' %}" style="text-decoration:none !important; color:white !important; margin-bottom: 30px;">Contact</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3" style="color:white;">
+                        <h3>Follow Us</h3>
+                        <br>
+                        <div class="social">
+                            <a href="https://www.facebook.com" target="_blank" style="text-decoration: none; display: inline-block;  margin-right: 10px;">
+                                <img src="{% static 'images/facebook.png' %}">
+                            </a>
+                            <a href="https://github.com/almasdelic" target="_blank" style="text-decoration: none; display: inline-block;  margin-right: 10px;">
+                                <img src="{% static 'images/github.png' %}">
+                            </a>
+                            <a href="https://www.instagram.com/almasdelic/" target="_blank" style="text-decoration: none; display: inline-block;  margin-right: 10px;">
+                                <img src="{% static 'images/instagram.png' %}">
+                            </a>
+                            <a href="https://www.linkedin.com/in/almasdelic/" target="_blank" style="text-decoration: none; display: inline-block;  margin-right: 10px;">
+                                <img src="{% static 'images/linkedin.png' %}">
+                            </a>
+                            <!-- Add more social media links and images as needed -->
+                        </div>
+                    </div>
+
+                </div>
             </div>
+            <br><br><br>
+            <p class="m-0 text-center text-white">Copyright &copy; GameTech 2023</p>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

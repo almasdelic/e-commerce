@@ -7,9 +7,20 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
 from django import forms
 
+# Import Pagination Stuff
+from django.core.paginator import Paginator
+
+
 def home(request):
     products = Product.objects.all()
-    return render(request, 'index.html', {'products':products})
+    
+    # Set up Pagination
+    p = Paginator(Product.objects.all(), 8)
+    page = request.GET.get('page')
+    products_list = p.get_page(page)
+    
+    return render(request, 'index.html', {'products':products, 'products_list':products_list})
+
 
 def about(request):
     return render(request, 'about.html', {})
@@ -75,3 +86,5 @@ def category(request, foo):
     except:
         messages.success(request, ("That category doesn't exist..."))
         return redirect('home')
+    
+    

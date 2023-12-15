@@ -30,11 +30,11 @@
 
 
  - Empty Cart
- ![image] (https://github.com/almasdelic/e-commerce/blob/main/sc/127.0.0.1_8000_cart_.png)
+ ![image](https://github.com/almasdelic/e-commerce/blob/main/sc/127.0.0.1_8000_cart_.png)
 
 
 - Cart with Product
-![image] (https://github.com/almasdelic/e-commerce/blob/main/sc/127.0.0.1_8000_cart_%20(1).png)
+![image](https://github.com/almasdelic/e-commerce/blob/main/sc/127.0.0.1_8000_cart_%20(1).png)
 
 
 - Admin Dashboard

@@ -37,12 +37,9 @@
 ![image](https://github.com/almasdelic/e-commerce/blob/main/sc/127.0.0.1_8000_cart_%20(1).png)
 
 
-- Admin Dashboard
-![image](https://github.com/almasdelic/e-commerce/blob/main/sc/127.0.0.1_8000_admin_.png)
-
-
  I work on this project regularly to make it as good as possible!
  So far, I am presenting to you an e-commerce site, which has several functionalities, with the possibility of progress!
+ All products are added via the Admin Dashboard!
 
  # What did you use to build this website?
 

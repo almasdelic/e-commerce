@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br><br><br>
+    <center>
+        <h4>Search Results for "{{ query }}"</h4>
+    </center>
+
+    {% if results %}
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+                    {% for product in results %}
+                        <div class="col mb-4">
+                            <div class="card h-100">
+                                <!-- Product image-->
+                                <img class="card-img-top" src="{{product.image.url}}" alt="..." />
+                                <!-- Product details-->
+                                <div class="card-body p-3">
+                                    <div class="text-center">
+                                        <!-- Product name-->
+                                        <h6 class="fw-bolder">{{product.name}}</h6>
+                                        <!-- Product price-->
+                                        ${{product.price}} 
+                                    </div>
+                                </div>
+                                <!-- Product actions-->
+                                <div class="card-footer p-3 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center">
+                                        <a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">View Product</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% else %}
+    <center>
+        <br><br><br>
+        <h2>No results found!</h2>
+        <p>Please try some other search keywords.</p>
+    </center>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    {% endif %}
+{% endblock %}

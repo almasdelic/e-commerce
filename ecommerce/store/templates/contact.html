@@ -6,8 +6,7 @@
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Shop in style</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Welcome to GameTech</p>
+            <h1 class="display-4 fw-bolder">Contact</h1>
         </div>
     </div>
 </header>
@@ -20,30 +19,41 @@
     <div class="row">
         <center>
             
+            {% if message_name %}
+            <center>
+                <h2>Thanks {{message_name}}</h2>
+                <p>We received your email and will respond shortly...</p>
+            </center>
+            {% else %}
+
             <div class="google-maps">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91679.9253568683!2d18.066228925677464!3d44.10404011048339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475f2733d8f7b74d%3A0x4ea18801b60ea780!2s%C5%BDeljezni%C4%8Dka%20Stanica%20Kakanj!5e0!3m2!1sen!2sba!4v1702318234315!5m2!1sen!2sba" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91679.9253568683!2d18.066228925677464!3d44.10404011048339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475f2733d8f7b74d%3A0x4ea18801b60ea780!2s%C5%BDeljezni%C4%8Dka%20Stanica%20Kakanj!5e0!3m2!1sen!2sba!4v1702318234315!5m2!1sen!2sba" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
             <br><br>
             <div class="row">
                 <div class="col-md-7">
                     <h2>Get in Touch</h2>
+                        <form id="contactForm" method="post" action="{% url 'contact' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" required>
+                            </div>
 
-                    <form id="contactForm" method="post" action="{% url 'contact' %}">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" required>
-                        </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
+                            </div>
 
-                        <div class="mb-3">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
-                        </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Enter Your Message" required></textarea>
+                            </div>
 
-                        <div class="mb-3">
-                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Enter Your Message" required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
                 </div>
+            
 
                 <div class="col-md-5" style="background-color: #0077cc; color: white; display: flex; flex-direction: column; align-items: flex-start; padding: 50px;">
                     <h3>Address</h3>
@@ -57,6 +67,8 @@
                     <h3>Email</h3>
                     <p>gametech2023@gmail.com</p>
                 </div>
+
+            {% endif %}
 
             </div>
         </center>

@@ -138,9 +138,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# Admin Dashboard
 JAZZMIN_SETTINGS = {
     'site_header': "GameTech",
     'site_brand': "GameTech Shop",
     'site_logo': "images/cooperation.png",
     'copyright': "GameTech",
 }
+
+# Settings For Email
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 587
+#EMAIL_HOST_USER = 'delic.almas2023@gmail.com'
+#EMAIL_HOST_PASSWORD = ''
+#EMAIL_USE_TLS = True

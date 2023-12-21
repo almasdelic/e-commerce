@@ -28,10 +28,6 @@
                               <option value="3">3</option>
                               <option value="4">4</option>
                               <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
                           </select>
 
                           <br>
@@ -42,10 +38,14 @@
                         {% if user.is_authenticated %}
                           <button type="button" value="{{ product.id }}" class="btn btn-secondary" id="add-cart">Add To Cart</button>
                         {% endif %}
-                        
+                        <br><br>
                         {% if not user.is_authenticated %}
                           <h6>Please Login or Register to purchase this device</h6>
+                          <br>
+                          <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+                          <a href="{% url 'register' %}" class="btn btn-secondary">Register</a> 
                         {% endif %}
+                          
                       </div>
                   </div>
               </div>
@@ -53,6 +53,7 @@
       </div>
   </div>
 </div>
+
 
 <br>
 <br>

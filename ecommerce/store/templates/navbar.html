@@ -13,6 +13,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
@@ -24,8 +25,17 @@
                         <li><a class="dropdown-item" href="{% url 'category' 'PC' %}">PC</a></li>
                         <li><a class="dropdown-item" href="{% url 'category' 'Watches' %}">Watches</a></li>
                     </ul>
+                    
                 </li>
             </ul>
+            
+            <!--Search-->
+            <form method="GET" action="{% url 'search_results' %}">
+                <div class="d-flex form-inputs">
+                    <input class="form-control" type="text" placeholder="Search for any product..." name="q" id="search">
+                </div>
+            </form>
+            <!--Search-->
 
             {% if user.is_authenticated %}
                 <ul class="navbar-nav">

@@ -6,6 +6,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
 from django import forms
+from django.core.mail import send_mail # For Email in Contact Form  
+# from .models import Message
+
+from django.db.models import Q
+
 
 # Import Pagination Stuff
 from django.core.paginator import Paginator
@@ -24,6 +29,27 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html', {})
+
+
+def contact(request):
+    if request.method == 'POST':
+        message_name = request.POST['name']
+        message_email = request.POST['email']
+        message = request.POST['message']
+        
+        # Send an email
+        '''send_mail(
+            message_name, # subject
+            message, # message
+            message_email, # from email
+            ['delic.almas2023@gmail.com'], # to email
+        )
+        '''
+        return render(request, 'contact.html', {'message_name':message_name})
+    
+    else:
+        return render(request, 'contact.html', {})
+
 
 
 def login_user(request):
@@ -87,4 +113,33 @@ def category(request, foo):
         messages.success(request, ("That category doesn't exist..."))
         return redirect('home')
     
+    
+def search_results(request):
+    query = request.GET.get('q', '')
+    
+    if query:
+        results = Product.objects.filter(
+            Q(name__icontains=query) | Q(description__icontains=query) # Koristi se Django ORM (Object-Relational Mapping) za pretragu objekata tipa Product. Pretraga se vrši po imenu 
+        )
+    else:
+        results = []
+
+    return render(request, 'search_results.html', {'results': results, 'query': query})
+    
+
+'''
+def thankyou(request):
+    submission_message = None
+
+    if request.method == 'POST':
+
+        message_content = request.POST.get('message')
+        recipient = request.user
+        message = Message.objects.create(sender=request.user, recipient=recipient, content=message_content)
+        message.save()
+
+        submission_message = "Thank you for your message!"  
+
+    return render(request, 'templates/contact.html', {'submission_message': submission_message})
+'''  
     

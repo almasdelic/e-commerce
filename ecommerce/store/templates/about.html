@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
-
+{% load static%}
 {% block content %}
 
 <!-- Header-->
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Shop in style</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Welcome to GameTech</p>
+            <h1 class="display-4 fw-bolder">About Us</h1>
         </div>
     </div>
 </header>
@@ -19,6 +18,7 @@
     <div class="row">
         <center>
             <div class="col-8">
+                
                 <h2>Welcome to GameTech</h2>
                 <p>Your ultimate destination for cutting-edge gaming technologies! At GameTech, we are passionate about delivering an unparalleled gaming experience to enthusiasts and casual gamers alike. Our commitment extends beyond just offering top-notch products; we strive to create a community where gaming enthusiasts can explore, connect, and elevate their gaming journey.</p>
 
@@ -37,8 +37,28 @@
                 <p>Embark on an immersive gaming experience with GameTech. Explore the latest in gaming technologies, connect with fellow gamers, and elevate your gaming setup to new heights. Welcome to the future of gaming – welcome to GameTech.</p>
             </div>
         </center>
+        
     </div>
+    <br><br><br>
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{% static 'images/computers.jpg' %}" style="width:250px; height: 140px">  
+        </div>
+        <div class="col-md-3">
+            <img src="{% static 'images/laptops.jpg' %}" style="width:250px; height: 140px">
+        </div>
+        <div class="col-md-3">
+            <img src="{% static 'images/mobile-phones.jpg' %}" style="width:250px; height: 140px">
+        </div>
+        <div class="col-md-3">
+            <img src="{% static 'images/smart-watches.jpg' %}" style="width:250px; height: 140px">
+        </div>
+    </div>
+
 </div>
+
+
 <br>
 <br>
 <br>

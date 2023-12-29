@@ -50,6 +50,10 @@ def cart_update(request):
         return response
     
     
+def procced_to_checkout(request):
+    return render(request, 'procced_to_checkout.html', {})
+
+    
 def cart_delete(request):
     cart = Cart(request)
     

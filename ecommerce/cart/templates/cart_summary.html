@@ -52,19 +52,26 @@
                                           </select>
                                           <br><br>
 
+                                          
                                           <a href="{% url 'home' %}" class="btn btn-secondary">Continue Shopping</a>
                                           <button type="button" data-index="{{product.id}}" class="btn btn-secondary update-cart">Update</button>
                                           <button type="button" data-index="{{product.id}}" class="btn btn-danger delete-cart">Delete</button>
 
                                       </div>
+                                    
                                   </div>
                               </div>
                           </div>
                       </div>
                   </div>
               {% endfor %}
-              <br><br><br>
-              <h4>Total Price: ${{totals}} </h4>
+              <center>
+                <br><br><br>
+                <div>
+                    <h4>Total Price: ${{totals}} </h4>
+                    <a href="{% url 'checkout' %}" class="btn btn-warning">Proced To Checkout</a>
+                </div>
+              </center>
           {% else %}
                   
             <div class="container-fluid  mt-100">

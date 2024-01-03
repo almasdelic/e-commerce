@@ -16,6 +16,18 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 
 
+
+def thank_you(request):
+    return render(request, 'thank_you.html', {})
+
+
+
+def category_summary(reqeust):
+    categories = Category.objects.all()
+    return render(reqeust, 'category_summary.html', {"categories":categories})
+
+
+
 def home(request):
     products = Product.objects.all()
     

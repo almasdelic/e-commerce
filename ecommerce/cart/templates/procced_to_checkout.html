@@ -8,7 +8,7 @@
     <div class="row justify-content-md-center">
         <div class="col-md-8">
             <h2 class="text-center">Checkout</h2>
-            <form action="/process-order" method="post" class="checkout-form">
+            <form action="/process-order" method="post" class="checkout-form" id="checkoutForm">
                 <div class="form-group">
                     <label for="name">Your Name *</label>
                     <input type="text" id="name" name="name" class="form-control" required>
@@ -20,7 +20,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Email*</label>
                     <input type="email" id="email" name="email" class="form-control" required>
                 </div>
                 <br>
@@ -64,12 +64,45 @@
                     <input type="text" id="cvv" name="cvv" class="form-control" required>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-success">Place Order</button>
+                <button type="button" class="btn btn-success" id="placeOrderBtn">Place Order</button>
             </form>
         </div>
 
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get form and button elements
+        var form = document.getElementById("checkoutForm");
+        var placeOrderBtn = document.getElementById("placeOrderBtn");
+    
+        // Add click event listener to the button
+        placeOrderBtn.addEventListener("click", function() {
+            // Check if all required fields are filled
+            if (validateForm()) {
+                // If all fields are filled, submit the form
+                location.href = '{% url 'thank_you' %}';
+            } else {
+                // If not all fields are filled, display an alert or handle it as needed
+                alert("Please fill in all required fields.");
+            }
+        });
+    
+        // Function to validate the form
+        function validateForm() {
+            var requiredFields = form.querySelectorAll("[required]");
+            for (var i = 0; i < requiredFields.length; i++) {
+                if (!requiredFields[i].value) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    });
+</script>
+    
+
 
 <br><br><br><br><br><br>
 {% endblock %}

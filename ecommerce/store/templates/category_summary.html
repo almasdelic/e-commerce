@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Categories</h1>
+        </div>
+    </div>
+</header>
+
+<br><br><br>
+
+<div class="container">
+    <div class="row">
+        <center>
+            {% for category in categories %}
+                <br>
+                <h1>{{category.name}}</h1>
+                <h1>↯</h1>
+                <a href="{% url 'category' category %}">
+                    {% if category.image %}
+                        <br>
+                        <br>
+                        <img src="{{ category.image.url }}" alt="{{ category.name }}" style="max-width: 500px;">
+                        <br>
+                        <br>
+                    {% endif %}
+                </a>
+                <br>
+            {% endfor %}
+        </center>
+    </div>
+    <br><br><br>
+</div>
+
+<br><br><br>
+
+{% endblock %}

@@ -27,7 +27,6 @@ def category_summary(reqeust):
     return render(reqeust, 'category_summary.html', {"categories":categories})
 
 
-
 def home(request):
     products = Product.objects.all()
     

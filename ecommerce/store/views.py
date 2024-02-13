@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages # for pop up messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm
+from .forms import SignUpForm, UpdateUserForm
 from django import forms
 from django.core.mail import send_mail # For Email in Contact Form  
 # from .models import Message
@@ -16,15 +16,34 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 
 
+def update_user(request):
+    if request.user.is_authenticated:
+        current_user = User.objects.get(id=request.user.id)
+        user_form = UpdateUserForm (request.POST or None, instance=current_user)
+    
+        if user_form.is_valid():
+            user_form.save()
+            
+            login(request, current_user)
+            messages.success(request, "User Has Been Updated!")
+            return redirect('home')
+        return render(request, 'update_user.html', {'user_form':user_form})
+    else:
+        messages.success(request, "You Must Be Logged In Access That Page!")
+        return redirect('home')
+        
+        
+    
 
 def thank_you(request):
     return render(request, 'thank_you.html', {})
 
 
 
-def category_summary(reqeust):
+def category_summary(request):
     categories = Category.objects.all()
-    return render(reqeust, 'category_summary.html', {"categories":categories})
+    return render(request, 'category_summary.html', {"categories":categories})
+
 
 
 def home(request):
@@ -136,6 +155,9 @@ def search_results(request):
         results = []
 
     return render(request, 'search_results.html', {'results': results, 'query': query})
+
+
+
     
 
 '''

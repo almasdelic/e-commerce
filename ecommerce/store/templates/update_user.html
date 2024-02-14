@@ -7,7 +7,7 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">Update Profile</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Update User Profile...</p>
+            <p class="lead fw-normal text-white-50 mb-0">Update Your Profile...</p>
         </div>
     </div>
 </header>
@@ -27,6 +27,12 @@
                     {{ user_form.as_p }}
                     
                     <button type="submit" class="btn btn-secondary">Update Profile</button>
+
+                </form>
+
+                <br>
+                
+                <a href="{% url 'update_password' %}" class="btn btn-success">Update Password</a>
                     
             </div>
         </center>    

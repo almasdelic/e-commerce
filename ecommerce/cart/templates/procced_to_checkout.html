@@ -9,6 +9,16 @@
         <div class="col-md-8">
             <h2 class="text-center">Checkout</h2>
             <form action="/process-order" method="post" class="checkout-form" id="checkoutForm">
+
+                {% csrf_token %}
+                {% if errors %}
+                    <ul class="errors">
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
                 <div class="form-group">
                     <label for="name">Your Name *</label>
                     <input type="text" id="name" name="name" class="form-control" required>
@@ -49,20 +59,6 @@
                     <input type="text" id="contact-number" name="contact-number" class="form-control" required>
                 </div>
                 <br>
-                <div class="form-group">
-                    <label for="card-number">Credit Card Number *</label>
-                    <input type="text" id="card-number" name="card-number" class="form-control" required>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="expiry-date">Expiry Date *</label>
-                    <input type="date" id="expiry-date" name="expiry-date" placeholder="MM/YYYY" class="form-control" required>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="cvv">CVV *</label>
-                    <input type="text" id="cvv" name="cvv" class="form-control" required>
-                </div>
                 <br>
                 <button type="button" class="btn btn-success" id="placeOrderBtn">Place Order</button>
             </form>
@@ -76,33 +72,61 @@
         // Get form and button elements
         var form = document.getElementById("checkoutForm");
         var placeOrderBtn = document.getElementById("placeOrderBtn");
-    
+        var nameInput = document.getElementById("name");
+        var surnameInput = document.getElementById("surname");
+        var emailInput = document.getElementById("email");
+        var addresInput = document.getElementById("address");
+        var cityInput = document.getElementById("city");
+        var countryInput = document.getElementById("country");
+        var postal_zipInput = document.getElementById("postal-zip");
+        var contact_numberInput = document.getElementById("contact-number");
+
         // Add click event listener to the button
         placeOrderBtn.addEventListener("click", function() {
-            // Check if all required fields are filled
+            // Check if all required fields are filled and valid
             if (validateForm()) {
-                // If all fields are filled, submit the form
+                // If all fields are filled and valid, submit the form
                 location.href = '{% url 'thank_you' %}';
             } else {
-                // If not all fields are filled, display an alert or handle it as needed
-                alert("Please fill in all required fields.");
+                // If not all fields are filled or valid, display an alert or handle it as needed
+                alert("Please fill in all required fields correctly.");
             }
         });
-    
+
         // Function to validate the form
         function validateForm() {
             var requiredFields = form.querySelectorAll("[required]");
             for (var i = 0; i < requiredFields.length; i++) {
                 if (!requiredFields[i].value) {
-                    return false;
+                    return false; // If any required field is empty, return false
                 }
             }
+            // Check length of name and surname
+            if (nameInput.value.length < 3 || nameInput.value.length > 20 || surnameInput.value.length < 3 || surnameInput.value.length > 20) {
+                return false; // If name or surname length is invalid, return false
+            }
+            // Check email format
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                return false; // If email format is invalid, return false
+            }
+
+            //Check number
+            if (contact_numberInput.value.length < 5 || contact_numberInput.value.length > 20) {
+                return false; // If contact number length is invalid, return false
+            }
+
+            //Check ZIP
+            if (postal_zipInput.value.length < 5 || postal_zipInput.value.length > 20) {
+                return false; // If contact number length is invalid, return false
+            }
+            
+            // If all checks pass, return true
             return true;
         }
     });
-</script>
-    
 
+</script>
 
 <br><br><br><br><br><br>
 {% endblock %}

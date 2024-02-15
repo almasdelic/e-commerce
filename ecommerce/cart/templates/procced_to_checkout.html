@@ -9,16 +9,6 @@
         <div class="col-md-8">
             <h2 class="text-center">Checkout</h2>
             <form action="/process-order" method="post" class="checkout-form" id="checkoutForm">
-
-                {% csrf_token %}
-                {% if errors %}
-                    <ul class="errors">
-                        {% for error in errors %}
-                            <li>{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-
                 <div class="form-group">
                     <label for="name">Your Name *</label>
                     <input type="text" id="name" name="name" class="form-control" required>
